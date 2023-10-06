@@ -10,5 +10,5 @@ class Cliente extends Model
     use HasFactory;
 
     public $timestamps = false;
-    protected $fillable=['nombres','email','foto','apodo'];
+    protected $fillable=['nombres','email','foto','apodo','password','identificacion'];
 }

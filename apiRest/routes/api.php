@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\criticaController;
 use App\Http\Controllers\VideojuegoController;
 
 /*
@@ -30,13 +31,24 @@ Route::post('anadirCliente', [ClienteController::class, 'añadirCliente']);
 Route::put('actualizarCliente/{id}', [ClienteController::class, 'actualizarCliente']);
 //eliminar Cliente
 Route::delete('eliminarCliente/{id}', [ClienteController::class, 'eliminarCliente']);
+//login
+Route::get('login', [ClienteController::class, 'login']);
 
 
-    //GET TODO LOS VIDEO JUEGOS
+
+
+//GET TODO LOS VIDEO JUEGOS
 Route::get('videojuegos', [VideojuegoController::class, 'todoslosvideojuegos']);
-    //GET POR ID
+//GET POR ID
 Route::get('videojuegos/{id}', [VideojuegoController::class, 'obtenerporId']);
 // Ruta para actualizar un cliente por su ID
 Route::post('añadirvideojuego', [VideojuegoController::class, 'añadirvideojuego']);
 //actualizar Clientes
-Route::put('actualizarVideojuego/{id}', [ClienteController::class, 'actualizarCliente']);
+Route::put('actualizarVideojuego/{id}', [VideojuegoController::class, 'actualizarVideojuego']);
+//eliminar Cliente
+Route::delete('eliminarVideojuego/{id}', [VideojuegoController::class, 'eliminarVideojuego']);
+
+
+//Criticas
+Route::get('criticas', [criticaController::class, 'obtenertodos']);
+Route::get('nuevacritica', [VideojuegoController::class, 'todoslosvideojuegos']);

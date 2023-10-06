@@ -64,10 +64,20 @@ class ClienteController extends Controller
     public function eliminarCliente(Request $request, $id)
     {
         $cliente = Cliente::find($id);
-        if (is_null($cliente)){
+        if (is_null($cliente)) {
             return response()->json(['message' => 'Cliente no encontrado'], 404);
         }
         $cliente->delete();
         return response()->json(['message' => 'Cliente eliminado'], 204);
+    }
+
+    //FUNCION LOGIN
+    public function login(Request $request)
+    {
+        $cliente = new Cliente;
+        $identificacion=$request->input('identificacion');
+        $password=$request->input('password');
+        $cliente = Cliente::where(array('identificacion' => $identificacion, 'password' => $password))->get();
+        return response()->json($cliente,200);
     }
 }
